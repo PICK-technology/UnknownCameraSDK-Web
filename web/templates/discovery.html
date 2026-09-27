@@ -1,0 +1,196 @@
+{% extends "base.html" %}
+
+{% block title %}Camera Discovery — UnknownCameraSDK{% endblock %}
+
+{% block content %}
+
+<section class="page-header">
+
+    <div>
+        <div class="eyebrow">
+            NETWORK DISCOVERY
+        </div>
+
+        <h1>Find cameras on your network</h1>
+
+        <p class="page-description">
+            Discover IP cameras using ONVIF, network ports and streaming
+            protocols.
+        </p>
+    </div>
+
+</section>
+
+
+<section class="discovery-panel">
+
+    <div class="panel-header">
+
+        <div>
+            <h2>Camera discovery</h2>
+
+            <p>
+                The scan checks your local network for devices that may
+                provide video services.
+            </p>
+        </div>
+
+        <div class="scan-status">
+            <span class="status-dot status-dot--ready"></span>
+            <span>Ready to scan</span>
+        </div>
+
+    </div>
+
+
+    <div class="scan-info">
+
+        <div class="info-icon">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+                <circle cx="12" cy="12" r="9"></circle>
+                <path d="M12 10v6"></path>
+                <path d="M12 7.5h.01"></path>
+            </svg>
+        </div>
+
+        <div>
+            <strong>How discovery works</strong>
+
+            <p>
+                The scan runs asynchronously. Devices and protocol badges
+                appear as soon as individual probes confirm them.
+            </p>
+        </div>
+
+    </div>
+
+
+    <div class="scan-settings">
+
+        <div class="setting-card">
+
+            <div class="setting-label">
+                <span class="setting-icon">
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                        <circle cx="12" cy="12" r="3"></circle>
+                        <path d="M19.4 15a1.7 1.7 0 0 0 .34 1.88l.06.06-1.7 1.7-.06-.06a1.7 1.7 0 0 0-1.88-.34 1.7 1.7 0 0 0-1.04 1.56V20h-2.4v-.09a1.7 1.7 0 0 0-1.04-1.56 1.7 1.7 0 0 0-1.88.34l-.06.06-1.7-1.7.06-.06A1.7 1.7 0 0 0 8.4 15a1.7 1.7 0 0 0-1.56-1.04H6v-2.4h.84A1.7 1.7 0 0 0 8.4 10a1.7 1.7 0 0 0-.34-1.88L8 8.06l1.7-1.7.06.06a1.7 1.7 0 0 0 1.88.34 1.7 1.7 0 0 0 1.04-1.56V5h2.4v.2a1.7 1.7 0 0 0 1.04 1.56 1.7 1.7 0 0 0 1.88-.34l.06-.06 1.7 1.7-.06.06A1.7 1.7 0 0 0 19.4 10a1.7 1.7 0 0 0 1.56 1.04H22v2.4h-1.04A1.7 1.7 0 0 0 19.4 15Z"></path>
+                    </svg>
+                </span>
+
+                <span>
+                    <small>NETWORK</small>
+                    <strong>Local network</strong>
+                </span>
+            </div>
+
+            <div class="setting-value">
+                Automatic
+            </div>
+
+        </div>
+
+
+        <div class="setting-card">
+
+            <div class="setting-label">
+                <span class="setting-icon">
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                        <path d="M5 12h14"></path>
+                        <path d="M12 5v14"></path>
+                    </svg>
+                </span>
+
+                <span>
+                    <small>DISCOVERY</small>
+                    <strong>Probe sequence</strong>
+                </span>
+            </div>
+
+            <div class="setting-value">
+                ONVIF → Ports → RTSP
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="scan-action">
+
+        <button
+            type="button"
+            class="btn btn-primary"
+            id="scan-button"
+        >
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M3 12a9 9 0 0 1 15.36-6.36"></path>
+                <path d="M18 3v5h-5"></path>
+                <path d="M21 12a9 9 0 0 1-15.36 6.36"></path>
+                <path d="M6 21v-5h5"></path>
+            </svg>
+
+            <span>Scan network</span>
+        </button>
+
+        <span class="scan-hint">
+            Nothing starts automatically
+        </span>
+
+    </div>
+
+</section>
+
+
+<section class="results-section">
+
+    <div class="section-heading">
+
+        <div>
+            <div class="eyebrow">DISCOVERED DEVICES</div>
+            <h2>Cameras</h2>
+        </div>
+
+        <div class="device-count">
+            <span id="device-count">0</span>
+            <span>devices</span>
+        </div>
+
+    </div>
+
+
+    <div
+        class="empty-state"
+        id="empty-state"
+    >
+
+        <div class="empty-icon">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+                <rect x="3" y="6" width="14" height="12" rx="2"></rect>
+                <path d="m17 10 4-2v8l-4-2"></path>
+            </svg>
+        </div>
+
+        <h3>No cameras discovered yet</h3>
+
+        <p>
+            Start a network scan to discover IP cameras and video devices.
+        </p>
+
+    </div>
+
+
+    <div
+        class="device-list"
+        id="device-list"
+    >
+        <!-- Camera cards will be added here asynchronously. -->
+    </div>
+
+</section>
+
+{% endblock %}
+
+
+{% block scripts %}
+<script src="{{ url_for('static', path='js/discovery.js') }}"></script>
+{% endblock %}

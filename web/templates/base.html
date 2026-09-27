@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>{% block title %}UnknownCameraSDK{% endblock %}</title>
+
+    <meta
+        name="description"
+        content="Local IP camera discovery and diagnostics"
+    >
+
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', path='css/app.css') }}"
+    >
+
+    {% block head %}{% endblock %}
+</head>
+
+<body>
+
+<div class="app-shell">
+
+    <header class="topbar">
+        <div class="topbar-inner">
+
+            <a href="/" class="brand">
+                <span class="brand-mark">
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                        <path
+                            d="M4 7.5A2.5 2.5 0 0 1 6.5 5h11A2.5 2.5 0 0 1 20 7.5v9a2.5 2.5 0 0 1-2.5 2.5h-11A2.5 2.5 0 0 1 4 16.5v-9Z"
+                        />
+                        <path
+                            d="m9 9 6 3-6 3V9Z"
+                        />
+                    </svg>
+                </span>
+
+                <span class="brand-text">
+                    <span class="brand-name">UnknownCamera</span>
+                    <span class="brand-subtitle">SDK</span>
+                </span>
+            </a>
+
+            <div class="topbar-status">
+                <span class="status-dot status-dot--ready"></span>
+                <span>Local</span>
+            </div>
+
+        </div>
+    </header>
+
+
+    <main class="main-content">
+
+        {% block content %}{% endblock %}
+
+    </main>
+
+
+    <footer class="footer">
+        <div class="footer-inner">
+            <span>UnknownCameraSDK</span>
+            <span class="footer-separator">•</span>
+            <span>Local camera discovery</span>
+        </div>
+    </footer>
+
+</div>
+
+{% block scripts %}{% endblock %}
+
+</body>
+</html>

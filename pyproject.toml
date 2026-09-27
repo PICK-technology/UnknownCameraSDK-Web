@@ -9,6 +9,7 @@ description = "Local IP camera discovery and management toolkit"
 requires-python = ">=3.12"
 dependencies = [
     "fastapi",
+    "jinja2",
     "uvicorn[standard]",
 ]
 
